@@ -1,6 +1,7 @@
 import express from "express"
 import dotenv from "dotenv"
 import path from 'node:path';
+import fs from 'node:fs';
 import { fileURLToPath } from 'url'
 import colors from "colors"
 import connectDB from "./config/dbConfig.js"
@@ -56,12 +57,12 @@ app.use("/api/saved-posts", savedPostsRoutes)
 const buildPath = path.resolve(__dirname, '../client/dist');
 
 // 5. Static File Serving & SPA Routing
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production" || fs.existsSync(path.join(buildPath, 'index.html'))) {
     // Serve static files from the build directory
     app.use(express.static(buildPath));
 
-    // Express v5 requires a named parameter for wildcards (/*splat)
-    app.get('/*splat', (req, res) => {
+    // Express v5 wildcard pattern for SPA client-side routing
+    app.get('{/*splat}', (req, res) => {
         res.sendFile(path.join(buildPath, 'index.html'), (err) => {
             if (err) {
                 // If index.html is missing, this provides a clearer error
