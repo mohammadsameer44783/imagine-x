@@ -18,7 +18,7 @@ const Landing = () => {
 
 
   return (
-    <div className="w-full min-h-screen bg-[#0a0a0f] overflow-hidden flex flex-col relative">
+    <div className="w-full min-h-screen bg-[#0a0a0f] overflow-x-hidden flex flex-col relative">
 
       {/* Animated Background Mesh */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -70,7 +70,7 @@ const Landing = () => {
       </main>
 
       {/* Features */}
-      <div className="relative z-10 bg-black/40 backdrop-blur-xl border-t border-white/5 py-24">
+      {/* <div className="relative z-10 bg-black/40 backdrop-blur-xl border-t border-white/5 py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300">
@@ -98,7 +98,7 @@ const Landing = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
     </div>
   );
